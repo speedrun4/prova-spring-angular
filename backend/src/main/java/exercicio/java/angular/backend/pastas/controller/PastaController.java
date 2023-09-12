@@ -1,7 +1,7 @@
-package exercicio.java.angular.backend.pastas.controller;
+package prova.java.angular.backend.quotations.controller;
 
-import exercicio.java.angular.backend.pastas.model.Pasta;
-import exercicio.java.angular.backend.pastas.service.IPastaService;
+import prova.java.angular.backend.quotations.model.quotation;
+import prova.java.angular.backend.quotations.service.IquotationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,24 +11,24 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("setores/{setorId}/pastas")
-public class PastaController {
+@RequestMapping("currencyes/{currencyId}/quotations")
+public class quotationController {
 
     @Autowired
-    private IPastaService service;
+    private IquotationService service;
 
     @GetMapping
-    public List<Pasta> listAll(
-            @PathVariable(name = "setorId") Long setorId,
+    public List<quotation> listAll(
+            @PathVariable(name = "currencyId") Long currencyId,
             @RequestParam(defaultValue = "") String q) {
-        return service.listAll(setorId, q);
+        return service.listAll(currencyId, q);
     }
 
     @GetMapping("{id}")
-    public Pasta findById(
-            @PathVariable(name = "setorId") Long setorId,
+    public quotation findById(
+            @PathVariable(name = "currencyId") Long currencyId,
             @PathVariable(name = "id") Long id) {
-        return service.findById(setorId, id)
+        return service.findById(currencyId, id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }

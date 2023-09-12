@@ -1,14 +1,14 @@
-package exercicio.java.angular.backend;
+package prova.java.angular.backend;
 
-import exercicio.java.angular.backend.documentos.model.Documento;
-import exercicio.java.angular.backend.documentos.model.Situacao;
-import exercicio.java.angular.backend.documentos.repository.DocumentoRepository;
-import exercicio.java.angular.backend.documentos.repository.SituacaoRepository;
-import exercicio.java.angular.backend.documentos.service.IDocumentoService;
-import exercicio.java.angular.backend.pastas.model.Pasta;
-import exercicio.java.angular.backend.pastas.service.IPastaService;
-import exercicio.java.angular.backend.setores.model.Setor;
-import exercicio.java.angular.backend.setores.service.ISetorService;
+import prova.java.angular.backend.documentos.model.Documento;
+import prova.java.angular.backend.documentos.model.Situacao;
+import prova.java.angular.backend.documentos.repository.DocumentoRepository;
+import prova.java.angular.backend.documentos.repository.SituacaoRepository;
+import prova.java.angular.backend.documentos.service.IDocumentoService;
+import prova.java.angular.backend.quotations.model.quotation;
+import prova.java.angular.backend.quotations.service.IquotationService;
+import prova.java.angular.backend.currencyes.model.currency;
+import prova.java.angular.backend.currencyes.service.IcurrencyService;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,10 +23,10 @@ import java.util.List;
 class BackendApplicationTests {
 
     @Autowired
-    private ISetorService setorService;
+    private IcurrencyService currencyService;
 
     @Autowired
-    private IPastaService pastaService;
+    private IquotationService quotationService;
 
     @Autowired
     private IDocumentoService documentoService;
@@ -42,8 +42,8 @@ class BackendApplicationTests {
     }
 
     @Test
-    public void deveriaListarSetores() {
-        List<Setor> result = setorService.listAll("");
+    public void deveriaListarcurrencyes() {
+        List<currency> result = currencyService.listAll("");
 
         Assertions.assertNotNull(result);
         Assertions.assertFalse(result.isEmpty());
@@ -51,16 +51,16 @@ class BackendApplicationTests {
     }
 
     @Test
-    public void deveriaRecuperarSetorVendas() {
-        Setor result = setorService.findById(2L).get();
+    public void deveriaRecuperarcurrencyVendas() {
+        currency result = currencyService.findById(2L).get();
 
         Assertions.assertNotNull(result);
         Assertions.assertEquals("Vendas", result.getNome());
     }
 
     @Test
-    public void deveriaListarPastas() {
-        List<Pasta> result = pastaService.listAll(1L, "");
+    public void deveriaListarquotations() {
+        List<quotation> result = quotationService.listAll(1L, "");
 
         Assertions.assertNotNull(result);
         Assertions.assertFalse(result.isEmpty());
@@ -68,8 +68,8 @@ class BackendApplicationTests {
     }
 
     @Test
-    public void deveriaRecuperarPastaPrioritaria() {
-        Pasta result = pastaService.findById(2L, 3L).get();
+    public void deveriaRecuperarquotationPrioritaria() {
+        quotation result = quotationService.findById(2L, 3L).get();
 
         Assertions.assertNotNull(result);
         Assertions.assertEquals("Prioritário", result.getNome());
@@ -84,7 +84,7 @@ class BackendApplicationTests {
         Assertions.assertNotNull(result);
         Assertions.assertNotNull(result.getId());
         Assertions.assertNotNull(result.getSituacao());
-        Assertions.assertNotNull(result.getPasta());
+        Assertions.assertNotNull(result.getquotation());
     }
 
     @Test

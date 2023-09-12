@@ -1,6 +1,6 @@
-package exercicio.java.angular.backend.pastas.model;
+package prova.java.angular.backend.quotations.model;
 
-import exercicio.java.angular.backend.setores.model.Setor;
+import prova.java.angular.backend.currencyes.model.currency;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,16 +9,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name="pastas")
-public class Pasta {
+@Table(name="quotations")
+public class quotation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="setores_id")
-    private Setor setor;
+    @JoinColumn(name="currencyes_id")
+    private currency currency;
 
     private String nome;
 }

@@ -1,7 +1,7 @@
-package exercicio.java.angular.backend.setores.controller;
+package prova.java.angular.backend.currencyes.controller;
 
-import exercicio.java.angular.backend.setores.model.Setor;
-import exercicio.java.angular.backend.setores.service.ISetorService;
+import prova.java.angular.backend.currencyes.model.currency;
+import prova.java.angular.backend.currencyes.service.IcurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,19 +11,19 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("setores")
-public class SetorController {
+@RequestMapping("currencyes")
+public class currencyController {
 
     @Autowired
-    private ISetorService service;
+    private IcurrencyService service;
 
     @GetMapping
-    public List<Setor> listAll(@RequestParam(defaultValue = "") String q) {
+    public List<currency> listAll(@RequestParam(defaultValue = "") String q) {
         return service.listAll(q);
     }
 
     @GetMapping("{id}")
-    public Setor findById(@PathVariable("id") Long id) {
+    public currency findById(@PathVariable("id") Long id) {
         return service.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }

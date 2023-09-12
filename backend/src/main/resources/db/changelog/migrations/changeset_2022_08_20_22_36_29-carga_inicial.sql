@@ -1,11 +1,11 @@
 -- liquibase formatted sql
 -- changeset sombriks:changeset_2022_08_20_22_36_29-carga_inicial.sql
 
-insert into setores (id, nome)
+insert into currencyes (id, nome)
 values (1, 'Administrativo'),
        (2, 'Vendas'),
        (3, 'Estoque');
-insert into pastas (id, setores_id, nome)
+insert into quotations (id, currencyes_id, nome)
 values (1, 1, 'Prioritário'),
        (2, 1, 'Fiscal'),
        (3, 2, 'Prioritário'),
@@ -18,5 +18,5 @@ values (1, 'novo'),
        (2, 'transferido')
 
 -- rollback delete from estados_documento;
--- rollback delete from pastas;
--- rollback delete from setores;
+-- rollback delete from quotations;
+-- rollback delete from currencyes;

@@ -1,4 +1,4 @@
-package exercicio.java.angular.backend.documentos.model;
+package prova.java.angular.backend.documentos.model;
 
 import lombok.Getter;
 import lombok.Setter;

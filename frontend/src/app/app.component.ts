@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ApiService} from "./api/api.service";
-import {Pasta, Setor} from "./models";
+import {quotation, currency} from "./models";
 
 @Component({
   selector: 'app-root',
@@ -9,20 +9,20 @@ import {Pasta, Setor} from "./models";
 })
 export class AppComponent implements OnInit {
 
-  setores: Array<Setor> = [];
-  setorAtual?: Setor;
-  pastas: Array<Pasta> = [];
+  currencyes: Array<currency> = [];
+  currencyAtual?: currency;
+  quotations: Array<quotation> = [];
 
   constructor(private readonly api: ApiService) {
   }
 
   async ngOnInit() {
-    this.setores = await this.api.getSetores();
+    this.currencyes = await this.api.getcurrencyes();
   }
 
-  async getPastas(setor: Setor) {
-    this.setorAtual = setor;
-    this.pastas = []
-    this.pastas = await this.api.getPastas(this.setorAtual.id);
+  async getquotations(currency: currency) {
+    this.currencyAtual = currency;
+    this.quotations = []
+    this.quotations = await this.api.getquotations(this.currencyAtual.id);
   }
 }

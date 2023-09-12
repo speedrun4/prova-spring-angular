@@ -1,13 +1,13 @@
-package exercicio.java.angular.backend.setores.service;
+package prova.java.angular.backend.currencyes.service;
 
-import exercicio.java.angular.backend.setores.model.Setor;
+import prova.java.angular.backend.currencyes.model.currency;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ISetorService {
+public interface IcurrencyService {
 
-    List<Setor> listAll(String q);
+    List<currency> listAll(String q);
 
-    Optional<Setor> findById(Long id);
+    Optional<currency> findById(Long id);
 }

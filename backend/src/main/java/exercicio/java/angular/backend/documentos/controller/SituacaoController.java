@@ -1,7 +1,7 @@
-package exercicio.java.angular.backend.documentos.controller;
+package prova.java.angular.backend.documentos.controller;
 
-import exercicio.java.angular.backend.documentos.model.Situacao;
-import exercicio.java.angular.backend.documentos.repository.SituacaoRepository;
+import prova.java.angular.backend.documentos.model.Situacao;
+import prova.java.angular.backend.documentos.repository.SituacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

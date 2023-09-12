@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Axios} from "axios";
 
 import {environment} from "../../environments/environment";
-import {Documento, Pasta, Setor} from "../models";
+import {Documento, quotation, currency} from "../models";
 
 @Injectable()
 export class ApiService {
@@ -19,28 +19,28 @@ export class ApiService {
     })
   }
 
-  async getSetores(): Promise<Array<Setor>> {
-    const result = await this.cli.get("/setores")
+  async getcurrencyes(): Promise<Array<currency>> {
+    const result = await this.cli.get("/currencyes")
     return JSON.parse(result.data);
   }
 
-  async getPasta(setorId: number, pastaId: number): Promise<Pasta> {
-    const result = await this.cli.get(`/setores/${setorId}/pastas/${pastaId}`)
+  async getquotation(currencyId: number, quotationId: number): Promise<quotation> {
+    const result = await this.cli.get(`/currencyes/${currencyId}/quotations/${quotationId}`)
     return JSON.parse(result.data);
   }
 
-  async getPastas(setorId?: number): Promise<Array<Pasta>> {
-    const result = await this.cli.get(`/setores/${setorId}/pastas`)
+  async getquotations(currencyId?: number): Promise<Array<quotation>> {
+    const result = await this.cli.get(`/currencyes/${currencyId}/quotations`)
     return JSON.parse(result.data);
   }
 
-  async getDocumentos(setorId: number, pastaId: number, q = ""): Promise<Array<Documento>> {
-    const result = await this.cli.get(`/setores/${setorId}/pastas/${pastaId}/documentos?q=${q}`)
+  async getDocumentos(currencyId: number, quotationId: number, q = ""): Promise<Array<Documento>> {
+    const result = await this.cli.get(`/currencyes/${currencyId}/quotations/${quotationId}/documentos?q=${q}`)
     return JSON.parse(result.data);
   }
 
-  async salvarDocumento(setorId: number, pastaId: number, doc: any): Promise<Documento> {
-    const path = `/setores/${setorId}/pastas/${pastaId}/documentos`;
+  async salvarDocumento(currencyId: number, quotationId: number, doc: any): Promise<Documento> {
+    const path = `/currencyes/${currencyId}/quotations/${quotationId}/documentos`;
     const result = await this.cli[doc.id ? "put" : "post"](path, JSON.stringify(doc));
     return JSON.parse(result.data);
   }

@@ -1,43 +1,43 @@
 <h1 mat-dialog-title>Transferir documento</h1>
-<h2>Selecione o setor</h2>
+<h2>Selecione o currency</h2>
 <div mat-dialog-content>
   <mat-form-field class="example-full-width">
-    <mat-label>Setor</mat-label>
+    <mat-label>currency</mat-label>
     <input type="text"
            cdkFocusInitial
-           placeholder="Selecione um setor"
+           placeholder="Selecione um currency"
            matInput
-           [formControl]="setorControl"
-           [matAutocomplete]="setorAuto">
-    <mat-autocomplete #setorAuto autoActiveFirstOption
+           [formControl]="currencyControl"
+           [matAutocomplete]="currencyAuto">
+    <mat-autocomplete #currencyAuto autoActiveFirstOption
                       [displayWith]="displayFn">
-      <mat-option *ngFor="let setor of setores" [value]="setor">
-        {{setor.nome}}
+      <mat-option *ngFor="let currency of currencyes" [value]="currency">
+        {{currency.nome}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </div>
-<h2>Selecione a pasta</h2>
+<h2>Selecione a quotation</h2>
 <div mat-dialog-content>
   <mat-form-field class="example-full-width">
-    <mat-label>Pasta</mat-label>
+    <mat-label>quotation</mat-label>
     <input type="text"
-           placeholder="Selecione uma pasta"
+           placeholder="Selecione uma quotation"
            matInput
-           [formControl]="pastaControl"
-           [matAutocomplete]="pastaAuto">
-    <mat-autocomplete #pastaAuto autoActiveFirstOption
+           [formControl]="quotationControl"
+           [matAutocomplete]="quotationAuto">
+    <mat-autocomplete #quotationAuto autoActiveFirstOption
                       [displayWith]="displayFn">
-      <mat-option *ngFor="let pasta of pastas" [value]="pasta">
-        {{pasta.nome}}
+      <mat-option *ngFor="let quotation of quotations" [value]="quotation">
+        {{quotation.nome}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button (click)="dialogRef.close()">cancelar</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="({setor: setorControl.value, pasta: pastaControl.value, documento: data})"
-          [disabled]="pastaControl.value && !pastaControl.value.id">
+  <button mat-raised-button color="primary" [mat-dialog-close]="({currency: currencyControl.value, quotation: quotationControl.value, documento: data})"
+          [disabled]="quotationControl.value && !quotationControl.value.id">
     transferir
   </button>
 </div>

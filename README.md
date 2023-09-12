@@ -1,4 +1,4 @@
-# exercício java/spring angular
+# prova java/spring angular
 
 pequena prova de conceito de um frontend angular consumindo um backend java
 
@@ -10,7 +10,7 @@ pequena prova de conceito de um frontend angular consumindo um backend java
 
 ## como os esqueletos de projeto foram criados
 
-backend: [https://start.spring.io/](https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.7.3&packaging=jar&jvmVersion=11&groupId=exercicio.java.angular&artifactId=backend&name=backend&description=Demo%20project%20for%20Spring%20Boot&packageName=exercicio.java.angular.backend&dependencies=lombok,data-jpa,liquibase,mysql,h2,web)
+backend: [https://start.spring.io/](https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.7.3&packaging=jar&jvmVersion=11&groupId=prova.java.angular&artifactId=backend&name=backend&description=Demo%20project%20for%20Spring%20Boot&packageName=prova.java.angular.backend&dependencies=lombok,data-jpa,liquibase,mysql,h2,web)
 
 frontend:
 
@@ -39,13 +39,13 @@ npm install
 npm start
 ```
 
-## estrutura do exercício
+## estrutura do prova
 
 - gestão de documentos
-  - distribuir os documentos entre setores
-  - dentro dos setores distribuir em pastas
-    - documentos começam sem pasta
-  - transferir documentos entre setores
+  - distribuir os documentos entre currencyes
+  - dentro dos currencyes distribuir em quotations
+    - documentos começam sem quotation
+  - transferir documentos entre currencyes
   - documento tem estado
     - novo
     - transferido

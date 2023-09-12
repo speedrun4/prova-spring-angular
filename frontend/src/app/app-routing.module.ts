@@ -4,7 +4,7 @@ import {DocumentosComponent} from "./views/documentos/documentos.component";
 
 const routes: Routes = [
   {
-    path: "setores/:setorId/pastas/:pastaId/documentos",
+    path: "currencyes/:currencyId/quotations/:quotationId/documentos",
     component: DocumentosComponent
   }
 ];

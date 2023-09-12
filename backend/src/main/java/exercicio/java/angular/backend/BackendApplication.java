@@ -1,4 +1,4 @@
-package exercicio.java.angular.backend;
+package prova.java.angular.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

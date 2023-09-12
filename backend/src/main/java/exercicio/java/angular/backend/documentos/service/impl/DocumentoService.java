@@ -1,14 +1,14 @@
-package exercicio.java.angular.backend.documentos.service.impl;
+package prova.java.angular.backend.documentos.service.impl;
 
-import exercicio.java.angular.backend.documentos.model.Documento;
-import exercicio.java.angular.backend.documentos.model.Situacao;
-import exercicio.java.angular.backend.documentos.repository.DocumentoRepository;
-import exercicio.java.angular.backend.documentos.repository.SituacaoRepository;
-import exercicio.java.angular.backend.documentos.service.IDocumentoService;
-import exercicio.java.angular.backend.pastas.model.Pasta;
-import exercicio.java.angular.backend.pastas.repository.PastaRepository;
-import exercicio.java.angular.backend.setores.model.Setor;
-import exercicio.java.angular.backend.setores.repository.SetorRepository;
+import prova.java.angular.backend.documentos.model.Documento;
+import prova.java.angular.backend.documentos.model.Situacao;
+import prova.java.angular.backend.documentos.repository.DocumentoRepository;
+import prova.java.angular.backend.documentos.repository.SituacaoRepository;
+import prova.java.angular.backend.documentos.service.IDocumentoService;
+import prova.java.angular.backend.quotations.model.quotation;
+import prova.java.angular.backend.quotations.repository.quotationRepository;
+import prova.java.angular.backend.currencyes.model.currency;
+import prova.java.angular.backend.currencyes.repository.currencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -25,29 +25,29 @@ public class DocumentoService implements IDocumentoService {
     private DocumentoRepository repository;
 
     @Autowired
-    private PastaRepository pastaRepository;
+    private quotationRepository quotationRepository;
 
     @Autowired
-    private SetorRepository setorRepository;
+    private currencyRepository currencyRepository;
 
     @Autowired
     private SituacaoRepository situacaoRepository;
 
     @Override
-    public List<Documento> listAll(Long setorId, Long pastaId, String q) {
-        return repository.listAll(setorId, pastaId, q);
+    public List<Documento> listAll(Long currencyId, Long quotationId, String q) {
+        return repository.listAll(currencyId, quotationId, q);
     }
 
     @Override
-    public Optional<Documento> findById(Long setorId, Long pastaId, Long id) {
-        return repository.findById(setorId, pastaId, id);
+    public Optional<Documento> findById(Long currencyId, Long quotationId, Long id) {
+        return repository.findById(currencyId, quotationId, id);
     }
 
     @Override
     @Transactional
-    public Documento insert(Long setorId, Long pastaId, Documento documento) {
-        Pasta pasta = validacoes(setorId, pastaId);
-        documento.setPasta(pasta);
+    public Documento insert(Long currencyId, Long quotationId, Documento documento) {
+        quotation quotation = validacoes(currencyId, quotationId);
+        documento.setquotation(quotation);
         Situacao novo = situacaoRepository.findById(Situacao.NOVO)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "situação inválida"));
         documento.setSituacao(novo);
@@ -56,11 +56,11 @@ public class DocumentoService implements IDocumentoService {
 
     @Override
     @Transactional
-    public Documento update(Long setorId, Long pastaId, Documento documento) {
-        Pasta pasta = validacoes(setorId, pastaId);
+    public Documento update(Long currencyId, Long quotationId, Documento documento) {
+        quotation quotation = validacoes(currencyId, quotationId);
         Documento existente = repository.findById(documento.getId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "documento não existe"));
-        if (!existente.getPasta().equals(pasta)) {
+        if (!existente.getquotation().equals(quotation)) {
             Situacao transferido = situacaoRepository.findById(Situacao.TRANSFERIDO)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "situação inválida"));
             documento.setSituacao(transferido);
@@ -69,14 +69,14 @@ public class DocumentoService implements IDocumentoService {
         return repository.save(existente);
     }
 
-    private Pasta validacoes(Long setorId, Long pastaId) {
-        Setor setor = setorRepository.findById(setorId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "setor inválido"));
-        Pasta pasta = pastaRepository.findById(pastaId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "pasta inválida"));
-        if (!pasta.getSetor().equals(setor))
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "pasta de setor diferente");
-        return pasta;
+    private quotation validacoes(Long currencyId, Long quotationId) {
+        currency currency = currencyRepository.findById(currencyId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "currency inválido"));
+        quotation quotation = quotationRepository.findById(quotationId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "quotation inválida"));
+        if (!quotation.getcurrency().equals(currency))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "quotation de currency diferente");
+        return quotation;
     }
 
 }

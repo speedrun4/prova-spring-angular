@@ -6,7 +6,7 @@ plugins {
 	id 'jacoco'
 }
 
-group = 'exercicio.java.angular'
+group = 'prova.java.angular'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -47,7 +47,7 @@ liquibase {
 			// as migrações rodando pelo spring boot
 			classpath "src/main/resources"
 			changeLogFile "db/changelog/db.changelog-master.yaml"
-			url "jdbc:mysql://localhost:33066/exercicio_spring_angular"
+			url "jdbc:mysql://localhost:33066/prova_spring_angular"
 			driver "com.mysql.cj.jdbc.Driver"
 			username "root"
 			password "root"

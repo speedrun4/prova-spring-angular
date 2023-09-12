@@ -1,7 +1,7 @@
-package exercicio.java.angular.backend.documentos.controller;
+package prova.java.angular.backend.documentos.controller;
 
-import exercicio.java.angular.backend.documentos.model.Documento;
-import exercicio.java.angular.backend.documentos.service.IDocumentoService;
+import prova.java.angular.backend.documentos.model.Documento;
+import prova.java.angular.backend.documentos.service.IDocumentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("setores/{setorId}/pastas/{pastaId}/documentos")
+@RequestMapping("currencyes/{currencyId}/quotations/{quotationId}/documentos")
 public class DocumentoController {
 
     @Autowired
@@ -19,34 +19,34 @@ public class DocumentoController {
 
     @GetMapping
     public List<Documento> listAll(
-            @PathVariable Long setorId,
-            @PathVariable Long pastaId,
+            @PathVariable Long currencyId,
+            @PathVariable Long quotationId,
             @RequestParam(defaultValue = "") String q) {
-        return service.listAll(setorId, pastaId, q);
+        return service.listAll(currencyId, quotationId, q);
     }
 
     @GetMapping("{id}")
     public Documento findById(
-            @PathVariable Long setorId,
-            @PathVariable Long pastaId,
+            @PathVariable Long currencyId,
+            @PathVariable Long quotationId,
             @PathVariable Long id) {
-        return service.findById(setorId, pastaId, id)
+        return service.findById(currencyId, quotationId, id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
     public Documento insert(
-            @PathVariable Long setorId,
-            @PathVariable Long pastaId,
+            @PathVariable Long currencyId,
+            @PathVariable Long quotationId,
             @RequestBody Documento novo) {
-        return service.insert(setorId, pastaId, novo);
+        return service.insert(currencyId, quotationId, novo);
     }
 
     @PutMapping
     public Documento update(
-            @PathVariable Long setorId,
-            @PathVariable Long pastaId,
+            @PathVariable Long currencyId,
+            @PathVariable Long quotationId,
             @RequestBody Documento documento) {
-        return service.update(setorId, pastaId, documento);
+        return service.update(currencyId, quotationId, documento);
     }
 }

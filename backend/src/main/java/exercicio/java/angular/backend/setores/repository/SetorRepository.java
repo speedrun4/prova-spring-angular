@@ -1,6 +1,6 @@
-package exercicio.java.angular.backend.setores.repository;
+package prova.java.angular.backend.currencyes.repository;
 
-import exercicio.java.angular.backend.setores.model.Setor;
+import prova.java.angular.backend.currencyes.model.currency;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SetorRepository extends JpaRepository<Setor, Long> {
+public interface currencyRepository extends JpaRepository<currency, Long> {
 
-    @Query("select s from Setor s where upper(s.nome) like '%'||upper(:q)||'%'")
-    List<Setor> listAll(String q);
+    @Query("select s from currency s where upper(s.nome) like '%'||upper(:q)||'%'")
+    List<currency> listAll(String q);
 }

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Documento, Pasta, Setor} from "../../models";
+import {Documento, quotation, currency} from "../../models";
 import {ApiService} from "../../api/api.service";
 import {FormControl} from "@angular/forms";
 
@@ -12,11 +12,11 @@ import {FormControl} from "@angular/forms";
 })
 export class TransferirDialogComponent implements OnInit {
 
-  setores: Setor[] = [];
-  pastas: Pasta[] = [];
+  currencyes: currency[] = [];
+  quotations: quotation[] = [];
 
-  setorControl = new FormControl<Setor | ''>('');
-  pastaControl = new FormControl<Pasta | ''>('');
+  currencyControl = new FormControl<currency | ''>('');
+  quotationControl = new FormControl<quotation | ''>('');
 
   constructor(
     private api: ApiService,
@@ -26,20 +26,20 @@ export class TransferirDialogComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.setores = await this.api.getSetores()
+    this.currencyes = await this.api.getcurrencyes()
 
-    this.setorControl.valueChanges.subscribe(async (value) => {
-      this.pastaControl.setValue("");
+    this.currencyControl.valueChanges.subscribe(async (value) => {
+      this.quotationControl.setValue("");
       if (value && value.id) {
-        this.pastas = await this.api.getPastas(value.id);
+        this.quotations = await this.api.getquotations(value.id);
       } else {
-        this.pastas = [];
+        this.quotations = [];
       }
     });
 
-    this.pastaControl.valueChanges.subscribe(async (value) => {
+    this.quotationControl.valueChanges.subscribe(async (value) => {
       if (value && value.id) {
-        this.data.pasta = value;
+        this.data.quotation = value;
       }
     });
   }

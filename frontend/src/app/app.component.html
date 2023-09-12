@@ -3,21 +3,21 @@
     <h1>Gestão de documentos</h1>
   </mat-toolbar>
   <mat-card>
-    <mat-card-title>Setores</mat-card-title>
+    <mat-card-title>currencyes</mat-card-title>
     <mat-card-content>
       <mat-accordion>
         <mat-expansion-panel
-          *ngFor="let setor of setores"
-          (opened)="getPastas(setor)">
+          *ngFor="let currency of currencyes"
+          (opened)="getquotations(currency)">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{setor.nome}}
+              {{currency.nome}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p *ngFor="let pasta of pastas">
-            <a *ngIf="setor.id == pasta.setor?.id"
-              [routerLink]="['/setores',setor.id,'pastas',pasta.id,'documentos']">
-              {{pasta.nome}}
+          <p *ngFor="let quotation of quotations">
+            <a *ngIf="currency.id == quotation.currency?.id"
+              [routerLink]="['/currencyes',currency.id,'quotations',quotation.id,'documentos']">
+              {{quotation.nome}}
             </a>
           </p>
         </mat-expansion-panel>
@@ -28,6 +28,6 @@
     <router-outlet></router-outlet>
   </section>
   <footer>
-    <p>&copy; exercício java angular 2022 - 2023</p>
+    <p>&copy; prova java angular 2022 - 2023</p>
   </footer>
 </article>

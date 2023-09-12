@@ -10,7 +10,7 @@ services:
     image: docker.io/library/mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: exercicio_spring_angular
+      MYSQL_DATABASE: prova_spring_angular
     ports:
       - "33066:3306"
 

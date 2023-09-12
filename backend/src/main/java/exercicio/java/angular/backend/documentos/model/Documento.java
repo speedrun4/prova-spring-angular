@@ -1,6 +1,6 @@
-package exercicio.java.angular.backend.documentos.model;
+package prova.java.angular.backend.documentos.model;
 
-import exercicio.java.angular.backend.pastas.model.Pasta;
+import prova.java.angular.backend.quotations.model.quotation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +21,8 @@ public class Documento {
     private Situacao situacao;
 
     @ManyToOne
-    @JoinColumn(name = "pastas_id")
-    private Pasta pasta;
+    @JoinColumn(name = "quotations_id")
+    private quotation quotation;
 
     private String titulo;
 }

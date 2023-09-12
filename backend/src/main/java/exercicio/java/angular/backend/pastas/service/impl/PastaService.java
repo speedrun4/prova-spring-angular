@@ -1,8 +1,8 @@
-package exercicio.java.angular.backend.pastas.service.impl;
+package prova.java.angular.backend.quotations.service.impl;
 
-import exercicio.java.angular.backend.pastas.model.Pasta;
-import exercicio.java.angular.backend.pastas.repository.PastaRepository;
-import exercicio.java.angular.backend.pastas.service.IPastaService;
+import prova.java.angular.backend.quotations.model.quotation;
+import prova.java.angular.backend.quotations.repository.quotationRepository;
+import prova.java.angular.backend.quotations.service.IquotationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,18 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PastaService implements IPastaService {
+public class quotationService implements IquotationService {
 
     @Autowired
-    private PastaRepository repository;
+    private quotationRepository repository;
 
     @Override
-    public List<Pasta> listAll(Long setorId, String q) {
-        return repository.listAll(setorId, q);
+    public List<quotation> listAll(Long currencyId, String q) {
+        return repository.listAll(currencyId, q);
     }
 
     @Override
-    public Optional<Pasta> findById(Long setorId, Long id) {
-        return repository.findById(setorId, id);
+    public Optional<quotation> findById(Long currencyId, Long id) {
+        return repository.findById(currencyId, id);
     }
 }

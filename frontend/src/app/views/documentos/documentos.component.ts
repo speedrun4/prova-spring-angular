@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 
-import {DadosTransferencia, Documento, Pasta, Setor} from "../../models";
+import {DadosTransferencia, Documento, quotation, currency} from "../../models";
 import {ApiService} from "../../api/api.service";
 import {
   DocumentoDialogComponent
@@ -19,10 +19,10 @@ import {
 export class DocumentosComponent implements OnInit {
 
   q = "";
-  pasta: Pasta = {nome: "Carregando..."};
+  quotation: quotation = {nome: "Carregando..."};
   documentos: Documento[] = [];
-  setorId: number = 0;
-  pastaId: number = 0;
+  currencyId: number = 0;
+  quotationId: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,10 +36,10 @@ export class DocumentosComponent implements OnInit {
 
   listar(): void {
     this.route.paramMap.subscribe(async next => {
-      this.setorId = parseInt(<string>next.get("setorId"));
-      this.pastaId = parseInt(<string>next.get("pastaId"));
-      this.pasta = await this.api.getPasta(this.setorId, this.pastaId);
-      this.documentos = await this.api.getDocumentos(this.setorId, this.pastaId, this.q);
+      this.currencyId = parseInt(<string>next.get("currencyId"));
+      this.quotationId = parseInt(<string>next.get("quotationId"));
+      this.quotation = await this.api.getquotation(this.currencyId, this.quotationId);
+      this.documentos = await this.api.getDocumentos(this.currencyId, this.quotationId, this.q);
     });
   }
 
@@ -49,7 +49,7 @@ export class DocumentosComponent implements OnInit {
       width: "50%"
     }).afterClosed().subscribe(async result => {
       if (result) {
-        await this.api.salvarDocumento(this.setorId, this.pastaId, result);
+        await this.api.salvarDocumento(this.currencyId, this.quotationId, result);
         this.listar();
       }
     });
@@ -61,8 +61,8 @@ export class DocumentosComponent implements OnInit {
       width: "50%"
     }).afterClosed().subscribe(async (result: DadosTransferencia) => {
       if (result) {
-        const {setor, pasta, documento} = result;
-        await this.api.salvarDocumento(<number>setor.id, <number>pasta.id, documento);
+        const {currency, quotation, documento} = result;
+        await this.api.salvarDocumento(<number>currency.id, <number>quotation.id, documento);
         this.listar();
       }
     });

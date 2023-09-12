@@ -1,6 +1,6 @@
-package exercicio.java.angular.backend.pastas.repository;
+package prova.java.angular.backend.quotations.repository;
 
-import exercicio.java.angular.backend.pastas.model.Pasta;
+import prova.java.angular.backend.quotations.model.quotation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PastaRepository extends JpaRepository<Pasta,Long> {
+public interface quotationRepository extends JpaRepository<quotation,Long> {
 
-    @Query("select p from Pasta p where p.setor.id = :setorId and upper(p.nome) like '%'||upper(:q)||'%'")
-    List<Pasta> listAll(Long setorId, String q);
+    @Query("select p from quotation p where p.currency.id = :currencyId and upper(p.nome) like '%'||upper(:q)||'%'")
+    List<quotation> listAll(Long currencyId, String q);
 
-    @Query("select p from Pasta p where p.setor.id = :setorId and  p.id = :id")
-    Optional<Pasta> findById(Long setorId, Long id);
+    @Query("select p from quotation p where p.currency.id = :currencyId and  p.id = :id")
+    Optional<quotation> findById(Long currencyId, Long id);
 }
