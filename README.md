@@ -42,10 +42,10 @@ npm start
 ## estrutura do prova
 
 - gestão de documentos
-  - distribuir os documentos entre currencyes
-  - dentro dos currencyes distribuir em quotations
-    - documentos começam sem quotation
-  - transferir documentos entre currencyes
+  - distribuir os documentos entre moeda
+  - dentro dos currencyes distribuir em cotações
+    - documentos começam sem cotação
+  - transferir documentos entre moedas
   - documento tem estado
     - novo
     - transferido
