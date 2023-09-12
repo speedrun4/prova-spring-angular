@@ -1,0 +1,8 @@
+target
+build
+*.class
+node_modules
+dist
+.idea
+.vscode
+.DS_Store
